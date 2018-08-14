@@ -2,17 +2,28 @@
 FROM alpine
 
 # Ryan P Smith
-LABEL maintainer="ryan@girilet.com"
+LABEL maintainer="ryan@girihlet.com"
 LABEL vendor="Girihlet, Inc."
+LABEL usage="SeqSig"
 
 # Install dependencies
-RUN apk add --no-cache vim git bash curl zlib-dev g++ make openjdk8 perl
+RUN apk add --no-cache \
+	git \
+	bash \
+	curl \
+	zlib-dev \
+	g++ \
+	make \
+	openjdk8 \
+	perl \
+	python \
+	python3
 
 # Install seqtk
 RUN git clone https://github.com/lh3/seqtk.git && \
 	cd seqtk && \
 	make && \
-	cp ./seqtk /bin/ && \ 
+	cp ./seqtk /bin/ && \
 	cd .. && \
 	rm -rf seqtk
 
